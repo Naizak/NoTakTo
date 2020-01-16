@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter.messagebox
 
+
 root = Tk()
 
 # --- Global Variables ---
@@ -19,7 +20,7 @@ current_player = "red"
 
 # What happens when any of the game board buttons are clicked
 def when_clicked(index):
-    buttons[index].config(text="X", state="disabled", disabledforeground=current_player, font=("Helvetica", 15, "bold"))
+    buttons[index].config(text="X", state="disabled", highlightbackground=current_player, font=("Helvetica", 15, "bold"))
     flip_player()
     current_player_display = "Player " + current_player.capitalize() + "'s Turn"
     player_label = Label(player_label_frame, text=current_player_display, font=("Helvetica", 15))
@@ -113,11 +114,11 @@ def check_rows():
     if row_1 or row_2 or row_3:
         game_still_going = False
     if row_1:
-        return button0['disabledforeground']
+        return button0['highlightbackground']
     elif row_2:
-        return button1['disabledforeground']
+        return button1['highlightbackground']
     elif row_3:
-        return button2['disabledforeground']
+        return button2['highlightbackground']
     return
 
 
@@ -143,11 +144,11 @@ def check_col():
     if col_1 or col_2 or col_3:
         game_still_going = False
     if col_1:
-        return button0['disabledforeground']
+        return button0['highlightbackground']
     elif col_2:
-        return button3['disabledforeground']
+        return button3['highlightbackground']
     elif col_3:
-        return button6['disabledforeground']
+        return button6['highlightbackground']
     return
 
 
@@ -168,9 +169,9 @@ def check_diagonals():
     if diagonal_1 or diagonal_2:
         game_still_going = False
     if diagonal_1:
-        return button0['disabledforeground']
+        return button0['highlightbackground']
     elif diagonal_2:
-        return button2['disabledforeground']
+        return button2['highlightbackground']
     return
 
 
@@ -242,7 +243,7 @@ info_menu.add_command(label="About")
 # Making frames
 player_label_frame = LabelFrame(root)
 player_label_frame.pack()
-game_board_frame = LabelFrame(root, bg='#FDFDE3')
+game_board_frame = LabelFrame(root)
 game_board_frame.pack()
 game_score_frame = LabelFrame(root, text="Score Board")
 game_score_frame.pack()
@@ -256,7 +257,7 @@ for index in range(9):
     r = (index % 3)
     c = int(index/3)
 
-    button = Button(game_board_frame, padx=50, pady=50, width=1, height=1, relief=SUNKEN, bg='#FDFDE3',
+    button = Button(game_board_frame, padx=50, pady=50, width=1, height=1, relief=SUNKEN,
                     command=lambda index=index: when_clicked(index))
     button.grid(row=r, column=c)
     buttons.append(button)
