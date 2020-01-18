@@ -50,29 +50,19 @@ def check_if_game_over():
 def check_for_loser():
     global game_still_going, loser
 
-    button0 = buttons[0]
-    button1 = buttons[1]
-    button2 = buttons[2]
-    button3 = buttons[3]
-    button4 = buttons[4]
-    button5 = buttons[5]
-    button6 = buttons[6]
-    button7 = buttons[7]
-    button8 = buttons[8]
-
     # check if any of the rows have the same value and is not empty
-    row_1 = button0['text'] == button3['text'] == button6['text'] != ''
-    row_2 = button1['text'] == button4['text'] == button7['text'] != ''
-    row_3 = button2['text'] == button5['text'] == button8['text'] != ''
+    row_1 = buttons[0]['text'] == buttons[3]['text'] == buttons[6]['text'] != ''
+    row_2 = buttons[1]['text'] == buttons[4]['text'] == buttons[7]['text'] != ''
+    row_3 = buttons[2]['text'] == buttons[5]['text'] == buttons[8]['text'] != ''
 
     # check if any of the col have the same value and is not empty
-    col_1 = button0['text'] == button1['text'] == button2['text'] != ''
-    col_2 = button3['text'] == button4['text'] == button5['text'] != ''
-    col_3 = button6['text'] == button7['text'] == button8['text'] != ''
+    col_1 = buttons[0]['text'] == buttons[1]['text'] == buttons[2]['text'] != ''
+    col_2 = buttons[3]['text'] == buttons[4]['text'] == buttons[5]['text'] != ''
+    col_3 = buttons[6]['text'] == buttons[7]['text'] == buttons[8]['text'] != ''
 
     # check if any of the diagonals have the same value and is not empty
-    diagonal_1 = button0['text'] == button4['text'] == button8['text'] != ''
-    diagonal_2 = button2['text'] == button4['text'] == button6['text'] != ''
+    diagonal_1 = buttons[0]['text'] == buttons[4]['text'] == buttons[8]['text'] != ''
+    diagonal_2 = buttons[2]['text'] == buttons[4]['text'] == buttons[6]['text'] != ''
 
     if row_1 or row_2 or row_3 or col_1 or col_2 or col_3 or diagonal_1 or diagonal_2:
         game_still_going = False
@@ -81,16 +71,8 @@ def check_for_loser():
         loser = current_player
 
         tkinter.messagebox.showinfo("Tic-Tac-Toe", "Player " + loser.capitalize() + " loses!")
-
-        button0.config(state="disabled")
-        button1.config(state="disabled")
-        button2.config(state="disabled")
-        button3.config(state="disabled")
-        button4.config(state="disabled")
-        button5.config(state="disabled")
-        button6.config(state="disabled")
-        button7.config(state="disabled")
-        button8.config(state="disabled")
+        for i in range(9):
+            buttons[i].config(state="disabled")
 
     return
 
@@ -116,25 +98,8 @@ def update_score():
 def restart_game():
     global game_still_going
 
-    button0 = buttons[0]
-    button1 = buttons[1]
-    button2 = buttons[2]
-    button3 = buttons[3]
-    button4 = buttons[4]
-    button5 = buttons[5]
-    button6 = buttons[6]
-    button7 = buttons[7]
-    button8 = buttons[8]
-
-    button0.config(text='', highlightbackground="White", state="normal")
-    button1.config(text='', highlightbackground="White", state="normal")
-    button2.config(text='', highlightbackground="White", state="normal")
-    button3.config(text='', highlightbackground="White", state="normal")
-    button4.config(text='', highlightbackground="White", state="normal")
-    button5.config(text='', highlightbackground="White", state="normal")
-    button6.config(text='', highlightbackground="White", state="normal")
-    button7.config(text='', highlightbackground="White", state="normal")
-    button8.config(text='', highlightbackground="White", state="normal")
+    for i in range(9):
+        buttons[i].config(text='', highlightbackground="White", state="normal")
 
     # prevent the bug of the player's turn not displaying correctly
     flip_player()
