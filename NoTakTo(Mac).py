@@ -18,8 +18,8 @@ current_player = "red"
 
 
 # What happens when any of the game board buttons are clicked
-def when_clicked(index):
-    buttons[index].config(text="X", state="disabled", highlightbackground=current_player, font=("Helvetica", 15, "bold"))
+def when_clicked(idx):
+    buttons[idx].config(text="X", state="disabled", highlightbackground=current_player, font=("Helvetica", 15, "bold"))
     flip_player()
     current_player_display = "Player " + current_player.capitalize() + "'s Turn"
     player_label = Label(player_label_frame, text=current_player_display, font=("Helvetica", 15))
@@ -50,21 +50,22 @@ def check_if_game_over():
 def check_for_loser():
     global game_still_going, loser
 
+    losing_list = []
     # check if any of the rows have the same value and is not empty
-    row_1 = buttons[0]['text'] == buttons[3]['text'] == buttons[6]['text'] != ''
-    row_2 = buttons[1]['text'] == buttons[4]['text'] == buttons[7]['text'] != ''
-    row_3 = buttons[2]['text'] == buttons[5]['text'] == buttons[8]['text'] != ''
+    losing_list.append(buttons[0]['text'] == buttons[3]['text'] == buttons[6]['text'] != '')
+    losing_list.append(buttons[1]['text'] == buttons[4]['text'] == buttons[7]['text'] != '')
+    losing_list.append(buttons[2]['text'] == buttons[5]['text'] == buttons[8]['text'] != '')
 
     # check if any of the col have the same value and is not empty
-    col_1 = buttons[0]['text'] == buttons[1]['text'] == buttons[2]['text'] != ''
-    col_2 = buttons[3]['text'] == buttons[4]['text'] == buttons[5]['text'] != ''
-    col_3 = buttons[6]['text'] == buttons[7]['text'] == buttons[8]['text'] != ''
+    losing_list.append(buttons[0]['text'] == buttons[1]['text'] == buttons[2]['text'] != '')
+    losing_list.append(buttons[3]['text'] == buttons[4]['text'] == buttons[5]['text'] != '')
+    losing_list.append(buttons[6]['text'] == buttons[7]['text'] == buttons[8]['text'] != '')
 
     # check if any of the diagonals have the same value and is not empty
-    diagonal_1 = buttons[0]['text'] == buttons[4]['text'] == buttons[8]['text'] != ''
-    diagonal_2 = buttons[2]['text'] == buttons[4]['text'] == buttons[6]['text'] != ''
+    losing_list.append(buttons[0]['text'] == buttons[4]['text'] == buttons[8]['text'] != '')
+    losing_list.append(buttons[2]['text'] == buttons[4]['text'] == buttons[6]['text'] != '')
 
-    if row_1 or row_2 or row_3 or col_1 or col_2 or col_3 or diagonal_1 or diagonal_2:
+    if any(losing_list):
         game_still_going = False
         flip_player()
 
@@ -143,7 +144,7 @@ for index in range(9):
     c = int(index / 3)
 
     button = Button(game_board_frame, padx=50, pady=50, width=1, height=1, relief=SUNKEN,
-                    command=lambda index=index: when_clicked(index))
+                    command=lambda idx=index: when_clicked(idx))
     button.grid(row=r, column=c)
     buttons.append(button)
 
