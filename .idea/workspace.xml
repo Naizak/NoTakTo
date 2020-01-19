@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abfd13d4-51eb-4320-8ec7-ae44fbcbf8a2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MiniMax(TicTacToe).py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/The Secrets of Notakt Winningat X only Tic Tac Toe.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TicTacToeAIExamples/HumanvsAI_Minimax.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TicTacToeAIExamples/HumanvsHuman.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TicTacToeAIExamples/Showdown_Minimax_vs_RL.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TicTacToeAIExamples/testing_(HumanvsAI)_ReinforcementLearning.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TicTacToeAIExamples/trained_state_values_O.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TicTacToeAIExamples/trained_state_values_X.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TicTacToeAIExamples/training_(AIvsAI)_ReinforcementLearning.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NoTakTo.py" beforeDir="false" afterPath="$PROJECT_DIR$/NoTakTo.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +45,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.NoTakTo(Mac)">
+  <component name="RunManager" selected="Python.MiniMax(TicTacToe)">
+    <configuration name="MiniMax(TicTacToe)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Notakto" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MiniMax(TicTacToe).py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="NoTakTo(Mac)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Notakto" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -126,6 +153,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.MiniMax(TicTacToe)" />
         <item itemvalue="Python.NoTakTo(Mac)" />
         <item itemvalue="Python.TicTacToeGUI(Mac)" />
         <item itemvalue="Python.TicTacToe" />
@@ -193,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579397825702</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Updated code structure for PC version">
+      <created>1579446276429</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1579446276429</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -213,6 +248,7 @@
     <MESSAGE value="Mac version of GUI" />
     <MESSAGE value="Updated code structure" />
     <MESSAGE value="Updated code structure2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated code structure2" />
+    <MESSAGE value="Updated code structure for PC version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated code structure for PC version" />
   </component>
 </project>
