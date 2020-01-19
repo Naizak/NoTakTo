@@ -145,7 +145,7 @@ for index in range(9):
     c = int(index/3)
 
     button = Button(game_board_frame, padx=100, pady=100, width=1, height=1, relief=SUNKEN, bg='#FDFDE3',
-                    command=lambda idx=index: when_clicked(index))
+                    command=lambda idx=index: when_clicked(idx))
     button.grid(row=r, column=c)
     buttons.append(button)
 
