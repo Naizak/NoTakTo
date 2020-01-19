@@ -51,6 +51,7 @@ def check_for_loser():
     global game_still_going, loser
 
     losing_list = []
+
     # check if any of the rows have the same value and is not empty
     losing_list.append(buttons[0]['text'] == buttons[3]['text'] == buttons[6]['text'] != '')
     losing_list.append(buttons[1]['text'] == buttons[4]['text'] == buttons[7]['text'] != '')
