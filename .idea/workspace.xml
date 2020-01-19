@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abfd13d4-51eb-4320-8ec7-ae44fbcbf8a2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/MiniMax(TicTacToe).py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NoTakTo(Mac).py" beforeDir="false" afterPath="$PROJECT_DIR$/NoTakTo(Mac).py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NoTakTo.py" beforeDir="false" afterPath="$PROJECT_DIR$/NoTakTo.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579375676652</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updated code structure2">
+      <created>1579397825702</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1579397825702</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,6 +212,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Mac version of GUI" />
     <MESSAGE value="Updated code structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated code structure" />
+    <MESSAGE value="Updated code structure2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated code structure2" />
   </component>
 </project>

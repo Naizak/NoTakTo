@@ -18,8 +18,8 @@ current_player = "red"
 
 
 # What happens when any of the game board buttons are clicked
-def when_clicked(index):
-    buttons[index].config(text="X", state="disabled", disabledforeground=current_player, font=("Helvetica", 15, "bold"))
+def when_clicked(idx):
+    buttons[idx].config(text="X", state="disabled", disabledforeground=current_player, font=("Helvetica", 15, "bold"))
     flip_player()
     current_player_display = "Player " + current_player.capitalize() + "'s Turn"
     player_label = Label(player_label_frame, text=current_player_display, font=("Helvetica", 15))
@@ -42,135 +42,40 @@ def flip_player():
 
 # Check if the game should end
 def check_if_game_over():
-    global game_still_going
-
     check_for_loser()
     update_score()
 
 
 # Check if a player has won
 def check_for_loser():
-    global loser
-    row_loser = check_rows()
-    col_loser = check_col()
-    diagonal_loser = check_diagonals()
+    global game_still_going, loser
 
-    if row_loser:
-        loser = row_loser
-        tkinter.messagebox.showinfo("Tic-Tac-Toe", "Player " + str(loser).capitalize() + " loses!")
-    elif col_loser:
-        loser = col_loser
-        tkinter.messagebox.showinfo("Tic-Tac-Toe", "Player " + str(loser).capitalize() + " loses!")
-    elif diagonal_loser:
-        loser = diagonal_loser
-        tkinter.messagebox.showinfo("Tic-Tac-Toe", "Player " + str(loser).capitalize() + " loses!")
-    else:
-        loser = None
-
-    if row_loser or col_loser or diagonal_loser:
-        button0 = buttons[0]
-        button1 = buttons[1]
-        button2 = buttons[2]
-        button3 = buttons[3]
-        button4 = buttons[4]
-        button5 = buttons[5]
-        button6 = buttons[6]
-        button7 = buttons[7]
-        button8 = buttons[8]
-
-        button0.config(state="disabled")
-        button1.config(state="disabled")
-        button2.config(state="disabled")
-        button3.config(state="disabled")
-        button4.config(state="disabled")
-        button5.config(state="disabled")
-        button6.config(state="disabled")
-        button7.config(state="disabled")
-        button8.config(state="disabled")
-
-    return
-
-
-# Check if play has won by getting three in a row
-def check_rows():
-    global game_still_going
-
-    button0 = buttons[0]
-    button1 = buttons[1]
-    button2 = buttons[2]
-    button3 = buttons[3]
-    button4 = buttons[4]
-    button5 = buttons[5]
-    button6 = buttons[6]
-    button7 = buttons[7]
-    button8 = buttons[8]
+    losing_list = []
 
     # check if any of the rows have the same value and is not empty
-    row_1 = button0['text'] == button3['text'] == button6['text'] != ''
-    row_2 = button1['text'] == button4['text'] == button7['text'] != ''
-    row_3 = button2['text'] == button5['text'] == button8['text'] != ''
-
-    if row_1 or row_2 or row_3:
-        game_still_going = False
-    if row_1:
-        return button0['disabledforeground']
-    elif row_2:
-        return button1['disabledforeground']
-    elif row_3:
-        return button2['disabledforeground']
-    return
-
-
-# Check if play has won by getting three in a column
-def check_col():
-    global game_still_going
-
-    button0 = buttons[0]
-    button1 = buttons[1]
-    button2 = buttons[2]
-    button3 = buttons[3]
-    button4 = buttons[4]
-    button5 = buttons[5]
-    button6 = buttons[6]
-    button7 = buttons[7]
-    button8 = buttons[8]
+    losing_list.append(buttons[0]['text'] == buttons[3]['text'] == buttons[6]['text'] != '')
+    losing_list.append(buttons[1]['text'] == buttons[4]['text'] == buttons[7]['text'] != '')
+    losing_list.append(buttons[2]['text'] == buttons[5]['text'] == buttons[8]['text'] != '')
 
     # check if any of the col have the same value and is not empty
-    col_1 = button0['text'] == button1['text'] == button2['text'] != ''
-    col_2 = button3['text'] == button4['text'] == button5['text'] != ''
-    col_3 = button6['text'] == button7['text'] == button8['text'] != ''
-
-    if col_1 or col_2 or col_3:
-        game_still_going = False
-    if col_1:
-        return button0['disabledforeground']
-    elif col_2:
-        return button3['disabledforeground']
-    elif col_3:
-        return button6['disabledforeground']
-    return
-
-
-# Check if play has won by getting three in a diagonal
-def check_diagonals():
-    global game_still_going
-
-    button0 = buttons[0]
-    button2 = buttons[2]
-    button4 = buttons[4]
-    button6 = buttons[6]
-    button8 = buttons[8]
+    losing_list.append(buttons[0]['text'] == buttons[1]['text'] == buttons[2]['text'] != '')
+    losing_list.append(buttons[3]['text'] == buttons[4]['text'] == buttons[5]['text'] != '')
+    losing_list.append(buttons[6]['text'] == buttons[7]['text'] == buttons[8]['text'] != '')
 
     # check if any of the diagonals have the same value and is not empty
-    diagonal_1 = button0['text'] == button4['text'] == button8['text'] != ''
-    diagonal_2 = button2['text'] == button4['text'] == button6['text'] != ''
+    losing_list.append(buttons[0]['text'] == buttons[4]['text'] == buttons[8]['text'] != '')
+    losing_list.append(buttons[2]['text'] == buttons[4]['text'] == buttons[6]['text'] != '')
 
-    if diagonal_1 or diagonal_2:
+    if any(losing_list):
         game_still_going = False
-    if diagonal_1:
-        return button0['disabledforeground']
-    elif diagonal_2:
-        return button2['disabledforeground']
+        flip_player()
+
+        loser = current_player
+
+        tkinter.messagebox.showinfo("Tic-Tac-Toe", "Player " + loser.capitalize() + " loses!")
+        for i in range(9):
+            buttons[i].config(state="disabled")
+
     return
 
 
@@ -195,27 +100,12 @@ def update_score():
 def restart_game():
     global game_still_going
 
-    button0 = buttons[0]
-    button1 = buttons[1]
-    button2 = buttons[2]
-    button3 = buttons[3]
-    button4 = buttons[4]
-    button5 = buttons[5]
-    button6 = buttons[6]
-    button7 = buttons[7]
-    button8 = buttons[8]
+    for i in range(9):
+        buttons[i].config(text='', state="normal")
 
-    button0.config(text='', state="normal")
-    button1.config(text='', state="normal")
-    button2.config(text='', state="normal")
-    button3.config(text='', state="normal")
-    button4.config(text='', state="normal")
-    button5.config(text='', state="normal")
-    button6.config(text='', state="normal")
-    button7.config(text='', state="normal")
-    button8.config(text='', state="normal")
-
-    # Prevents bug of saying the game is tied from the 2nd game and on
+    # prevent the bug of the player's turn not displaying correctly
+    flip_player()
+    # prevent the bug of the player's scores still incrementing while the next game is in progress
     game_still_going = True
 
 
@@ -238,7 +128,6 @@ info_menu = Menu(menu)
 menu.add_cascade(label="Info", menu=info_menu)
 info_menu.add_command(label="About")
 
-
 # Making frames
 player_label_frame = LabelFrame(root)
 player_label_frame.pack()
@@ -246,7 +135,6 @@ game_board_frame = LabelFrame(root, bg='#FDFDE3')
 game_board_frame.pack()
 game_score_frame = LabelFrame(root, text="Score Board")
 game_score_frame.pack()
-
 
 # A list to hold the references to the buttons created below
 buttons = []
@@ -257,10 +145,9 @@ for index in range(9):
     c = int(index/3)
 
     button = Button(game_board_frame, padx=100, pady=100, width=1, height=1, relief=SUNKEN, bg='#FDFDE3',
-                    command=lambda index=index: when_clicked(index))
+                    command=lambda idx=index: when_clicked(index))
     button.grid(row=r, column=c)
     buttons.append(button)
-
 
 # Main Loop
 root.mainloop()
