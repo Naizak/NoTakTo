@@ -1,5 +1,6 @@
 from tkinter import *
 import tkinter.messagebox
+import random
 
 root = Tk()
 
@@ -22,9 +23,6 @@ current_player = "X"
 def when_clicked(idx):
     buttons[idx].config(text=current_player, state="disabled", font=("Helvetica", 15))
     flip_player()
-    current_player_display = "Player " + current_player + "'s Turn"
-    player_label = Label(player_label_frame, text=current_player_display, font=("Helvetica", 15))
-    player_label.grid(row=0, column=1)
     check_if_game_over()
 
 
@@ -48,12 +46,12 @@ def check_if_game_over():
     check_for_winner()
     if game_still_going:
         check_if_tie()
+        if current_player == "O":
+            computers_turn()
     update_score()
 
+"""
 
-# Check if a player has won
-def check_for_winner():
-    global winner
     row_winner = check_rows()
     col_winner = check_col()
     diagonal_winner = check_diagonals()
@@ -74,6 +72,35 @@ def check_for_winner():
 
         for i in range(9):
             buttons[i].config(state="disabled")
+
+"""
+
+
+# Check if a player has won
+def check_for_winner():
+    global winner
+
+    row_winner = check_rows()
+    col_winner = check_col()
+    diagonal_winner = check_diagonals()
+
+    if row_winner:
+        winner = row_winner
+        tkinter.messagebox.showinfo("Tic-Tac-Toe", "Player " + winner + " wins!")
+    elif col_winner:
+        winner = col_winner
+        tkinter.messagebox.showinfo("Tic-Tac-Toe", "Player " + winner + " wins!")
+    elif diagonal_winner:
+        winner = diagonal_winner
+        tkinter.messagebox.showinfo("Tic-Tac-Toe", "Player " + winner + " wins!")
+    else:
+        winner = None
+
+    if row_winner or col_winner or diagonal_winner:
+
+        for i in range(9):
+            buttons[i].config(state="disabled")
+
     return
 
 
@@ -146,6 +173,20 @@ def check_if_tie():
     return
 
 
+# Computers turn, picks at random
+def computers_turn():
+    global game_still_going
+    if game_still_going:
+        available_moves = []
+        for i in range(9):
+            if buttons[i]['text'] == '':
+                available_moves.append(i)
+        computers_choice = random.choice(available_moves) # minimax will replace this step
+        buttons[computers_choice].config(text=current_player, state="disabled", font=("Helvetica", 15))
+        flip_player()
+        check_if_game_over()
+
+
 # Update the score of the game
 def update_score():
     global game_still_going, winner, xwins, owins, tie_games
@@ -157,7 +198,10 @@ def update_score():
             player_x_label.grid(row=1, column=1)
         elif winner == 'O':
             owins = owins+1
-            player_o_label = Label(game_score_frame, text="Player O's score is: " + str(owins), font=("Helvetica", 15))
+            # had to change str(owins) to str(int(owins/2)) because for some reason when O wins the if not gets called
+            # twice
+            player_o_label = Label(game_score_frame, text="Player O's score is: " + str(int(owins/2)), font=("Helvetica"
+                                                                                                             , 15))
             player_o_label.grid(row=2, column=1)
         else:
             tie_games = tie_games+1
@@ -167,13 +211,15 @@ def update_score():
 
 # Restart's the game
 def restart_game():
-    global game_still_going
+    global game_still_going, current_player
 
     for i in range(9):
         buttons[i].config(text='', state="normal")
 
     # Prevents bug of saying the game is tied from the 2nd game and on
     game_still_going = True
+    # Makes it so that human is always X and computer is always O
+    current_player = "X"
 
 
 # Making main window and title
