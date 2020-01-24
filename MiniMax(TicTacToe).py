@@ -105,31 +105,6 @@ def check_future_moves():
     if game_still_going:
         minimax_check_if_tie()
 
-"""
-
-    row_winner = check_rows()
-    col_winner = check_col()
-    diagonal_winner = check_diagonals()
-
-    if row_winner:
-        winner = row_winner
-        tkinter.messagebox.showinfo("Tic-Tac-Toe", "Player " + winner + " wins!")
-    elif col_winner:
-        winner = col_winner
-        tkinter.messagebox.showinfo("Tic-Tac-Toe", "Player " + winner + " wins!")
-    elif diagonal_winner:
-        winner = diagonal_winner
-        tkinter.messagebox.showinfo("Tic-Tac-Toe", "Player " + winner + " wins!")
-    else:
-        winner = None
-
-    if row_winner or col_winner or diagonal_winner:
-
-        for i in range(9):
-            buttons[i].config(state="disabled")
-
-"""
-
 
 # Check if a player has won
 def check_for_winner():
@@ -304,7 +279,7 @@ def computers_turn():
         # If I move here
         buttons[option].config(text='O')
         # Then what will the outcome of the game be
-        score = minimax(0, True)
+        score = minimax(0, float('-inf'), float('inf'), True)
         # Reset the position to blank
         buttons[option].config(text='')
         if score < best_score:
@@ -316,7 +291,7 @@ def computers_turn():
     check_if_game_over()
 
 
-def minimax(depth, is_maximizing):
+def minimax(depth, alpha, beta, is_maximizing):
     global game_still_going, winner, scores
 
     check_future_moves()
@@ -327,16 +302,20 @@ def minimax(depth, is_maximizing):
         score = scores[winner]
         winner = None
         game_still_going = True
-        return score # DEBUG - Step Into My Code goes to minimax_check_for_winner() but Step Into goes to correct spot
+        return score  # DEBUG - Step Into My Code goes to minimax_check_for_winner() but Step Into goes to correct spot
     if is_maximizing:
         best_score = float('-inf')
+
         for i in range(9):
             if buttons[i]['text'] == '':
                 buttons[i].config(text='X')
                 check_future_moves()
-                score = minimax(depth+1, False)
+                score = minimax(depth+1, alpha, beta, False)
                 buttons[i].config(text='')
                 best_score = max(score, best_score)
+                alpha = max(score, alpha)
+                if beta <= alpha:
+                    break
         return best_score
     else:
         best_score = float('inf')
@@ -344,9 +323,12 @@ def minimax(depth, is_maximizing):
             if buttons[i]['text'] == '':
                 buttons[i].config(text='O')
                 check_future_moves()
-                score = minimax(depth+1, True)
+                score = minimax(depth+1, alpha, beta, True)
                 buttons[i].config(text='')
                 best_score = min(score, best_score)
+                beta = min(score, beta)
+                if beta <= alpha:
+                    break
         return best_score
 
 

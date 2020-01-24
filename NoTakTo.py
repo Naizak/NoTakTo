@@ -42,7 +42,12 @@ def flip_player():
 
 # Check if the game should end
 def check_if_game_over():
+    global game_still_going
+
     check_for_loser()
+    if game_still_going:
+        if current_player == "blue":
+            computers_turn()
     update_score()
 
 
@@ -77,6 +82,111 @@ def check_for_loser():
             buttons[i].config(state="disabled")
 
     return
+
+
+
+"""
+
+# minimax score table
+scores = {'red': 1, 'blue': -1}
+
+# MINIMAX potential game states
+def check_future_moves():
+    global game_still_going
+
+    minimax_check_for_loser()
+
+
+# MINIMAX potential game states
+def minimax_check_for_loser():
+    global game_still_going, loser
+
+    losing_list = []
+
+    # check if any of the rows have the same value and is not empty
+    losing_list.append(buttons[0]['text'] == buttons[3]['text'] == buttons[6]['text'] != '')
+    losing_list.append(buttons[1]['text'] == buttons[4]['text'] == buttons[7]['text'] != '')
+    losing_list.append(buttons[2]['text'] == buttons[5]['text'] == buttons[8]['text'] != '')
+
+    # check if any of the col have the same value and is not empty
+    losing_list.append(buttons[0]['text'] == buttons[1]['text'] == buttons[2]['text'] != '')
+    losing_list.append(buttons[3]['text'] == buttons[4]['text'] == buttons[5]['text'] != '')
+    losing_list.append(buttons[6]['text'] == buttons[7]['text'] == buttons[8]['text'] != '')
+
+    # check if any of the diagonals have the same value and is not empty
+    losing_list.append(buttons[0]['text'] == buttons[4]['text'] == buttons[8]['text'] != '')
+    losing_list.append(buttons[2]['text'] == buttons[4]['text'] == buttons[6]['text'] != '')
+
+    if any(losing_list):
+        game_still_going = False
+
+    return
+
+# Computers turn, uses minimax
+def computers_turn():
+    
+    best_score = float('inf')
+    move = 0
+    available_moves = []
+    for i in range(9):
+        if buttons[i]['text'] == '':
+            available_moves.append(i)
+    for option in available_moves:
+        # If I move here
+        buttons[option].config(text="X", state="disabled", disabledforeground='blue')
+        # Then what will the outcome of the game be
+        score = minimax(0, float('inf'), float('-inf'), True)
+        # Reset the position to blank
+        buttons[option].config(text='', state="normal")
+        if score > best_score:
+            best_score = score
+            move = option
+
+    buttons[move]config(text="X", state="disabled", disabledforeground=current_player, font=("Helvetica", 15, "bold"))
+    flip_player()
+    check_if_game_over()
+
+
+def minimax(depth, alpha, beta, is_maximizing):
+    global game_still_going, loser, scores
+
+    check_future_moves()
+
+    if not game_still_going:
+
+        score = scores[loser]
+        loser = None
+        game_still_going = True
+        return score  # DEBUG - Step Into My Code goes to minimax_check_for_winner() but Step Into goes to correct spot
+    if is_maximizing:
+        best_score = float('inf')
+
+        for i in range(9):
+            if buttons[i]['text'] == '':
+                buttons[i].config(text='X', state="disabled", disabledforeground='red')
+                check_future_moves()
+                score = minimax(depth+1, alpha, beta, False)
+                buttons[i].config(text='', state="normal")
+                best_score = min(score, best_score)
+                alpha = min(score, alpha)
+                if beta <= alpha:
+                    break
+        return best_score
+    else:
+        best_score = float('inf')
+        for i in range(9):
+            if buttons[i]['text'] == '':
+                buttons[i].config(text='X', state="disabled", disabledforeground='blue')
+                check_future_moves()
+                score = minimax(depth+1, alpha, beta, True)
+                buttons[i].config(text='', state="normal")
+                best_score = max(score, best_score)
+                beta = max(score, beta)
+                if beta <= alpha:
+                    break
+        return best_score
+
+"""
 
 
 # Update the score of the game
