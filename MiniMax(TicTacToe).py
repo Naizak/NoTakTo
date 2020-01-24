@@ -361,6 +361,7 @@ def update_score():
             player_x_label.grid(row=1, column=1)
         elif winner == 'O':
             owins = owins+1
+            # WORK AROUND  NOT ACTUAL FIX
             # had to change str(owins) to str(int(owins/2)) because for some reason when O wins the if not gets called
             # twice
             player_o_label = Label(game_score_frame, text="Player O's score is: " + str(int(owins/2)), font=("Helvetica"
@@ -368,7 +369,10 @@ def update_score():
             player_o_label.grid(row=2, column=1)
         else:
             tie_games = tie_games+1
-            tie_game_label = Label(game_score_frame, text="Draw: " + str(tie_games), font=("Helvetica", 15))
+            # WORK AROUND  NOT ACTUAL FIX
+            # had to change str(tie_games) to str(int(tie_games/2)) because for some reason when ties the if not gets
+            # called twice
+            tie_game_label = Label(game_score_frame, text="Draw: " + str(int(tie_games/2)), font=("Helvetica", 15))
             tie_game_label.grid(row=3, column=1)
 
 
