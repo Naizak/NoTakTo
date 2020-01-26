@@ -219,7 +219,7 @@ def restart_game():
     # Prevents bug of saying the game is tied from the 2nd game and on
     game_still_going = True
     # Makes it so that human is always X and computer is always O
-    current_player = "X"
+    current_player = 'X'
 
 
 # Making main window and title
