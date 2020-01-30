@@ -43,7 +43,6 @@ minimax algorithm (takes in the game board, and the depth)
 
 from tkinter import *
 import tkinter.messagebox
-import random
 
 root = Tk()
 
@@ -60,8 +59,8 @@ player_blue_wins = 0
 # Who's turn is it
 current_player = "red"
 
-# minimax score table
-scores = {'red': 1, 'blue': -1}
+# Minimax score table
+scores = {"red": -1, "blue": 1}
 
 
 # What happens when any of the game board buttons are clicked
@@ -93,6 +92,19 @@ def check_if_game_over():
         if current_player == "blue":
             computers_turn()
     update_score()
+
+
+# MINIMAX potential game states
+def check_future_moves(*args):
+    global current_player
+    for arg in args:
+        if arg == "red":
+            current_player = "red"
+        elif arg == "blue":
+            current_player = "blue"
+        else:
+            break
+    minimax_check_for_loser()
 
 
 # Check if a player has won
@@ -127,24 +139,141 @@ def check_for_loser():
 
     return
 
-"""
-# minimax_check_winner()
-if ai is about to get 3 in a row do not go there
-"""
+
+# MINIMAX potential game states
+def minimax_check_for_loser():
+    global game_still_going, loser
+
+    losing_list = []
+
+    # check if any of the rows have the same value and is not empty
+    losing_list.append(buttons[0]['text'] == buttons[3]['text'] == buttons[6]['text'] != '')
+    losing_list.append(buttons[1]['text'] == buttons[4]['text'] == buttons[7]['text'] != '')
+    losing_list.append(buttons[2]['text'] == buttons[5]['text'] == buttons[8]['text'] != '')
+
+    # check if any of the col have the same value and is not empty
+    losing_list.append(buttons[0]['text'] == buttons[1]['text'] == buttons[2]['text'] != '')
+    losing_list.append(buttons[3]['text'] == buttons[4]['text'] == buttons[5]['text'] != '')
+    losing_list.append(buttons[6]['text'] == buttons[7]['text'] == buttons[8]['text'] != '')
+
+    # check if any of the diagonals have the same value and is not empty
+    losing_list.append(buttons[0]['text'] == buttons[4]['text'] == buttons[8]['text'] != '')
+    losing_list.append(buttons[2]['text'] == buttons[4]['text'] == buttons[6]['text'] != '')
+
+    if any(losing_list):
+        game_still_going = False
+        loser = current_player
+
+    return
 
 
 # Computers turn, uses minimax
 def computers_turn():
 
+    # For Debugging purposes
+    """
+            best_score = float('inf')
+            move = 0
+            available_moves = []
+
+            # clear the game board for debugging
+            for i in range(9):
+                buttons[i].config(text='', state="normal")
+
+            # Hard coded game board
+            buttons[0].config(text='X', state="disabled", disabledforeground=current_player)
+            buttons[1].config(text='X', state="disabled", disabledforeground=current_player)
+            buttons[6].config(text='X', state="disabled", disabledforeground=current_player)
+            buttons[7].config(text='X', state="disabled", disabledforeground=current_player)
+
+            for i in range(9):
+                if buttons[i]['text'] == '':
+                    available_moves.append(i)
+            for option in available_moves:
+                # If I go to a given option
+                buttons[option].config(text='X', state="disabled", disabledforeground=current_player)
+                # what would the score be
+                score = minimax(0, float('-inf'), float('inf'), True)
+                buttons[option].config(text='', state="normal")
+                if score < best_score:
+                    best_score = score
+                    move = option
+
+            buttons[move].config(text='X', state="disabled", disabledforeground=current_player,
+                                 font=("Helvetica", 15, "bold"))
+            flip_player()
+            check_if_game_over()
+    """
+
+    global current_player
+    best_score = float('inf')
+    move = 0
     available_moves = []
+
     for i in range(9):
         if buttons[i]['text'] == '':
             available_moves.append(i)
-    computers_move = random.choice(available_moves)
-    buttons[computers_move].config(text="X", state="disabled", disabledforeground=current_player,
-                                   font=("Helvetica", 15, "bold"))
+    for option in available_moves:
+        # If I move here
+        buttons[option].config(text='X', state="disabled", disabledforeground=current_player)
+        # Then what will the outcome of the game be
+        current_player = "blue"
+        score = minimax(0, float('-inf'), float('inf'), True)
+        # Reset the position to blank
+        buttons[option].config(text='', state="normal")
+        if score < best_score:
+            best_score = score
+            move = option
+    current_player = "blue"
+    buttons[move].config(text='X', state="disabled", disabledforeground=current_player, font=("Helvetica", 15, "bold"))
     flip_player()
     check_if_game_over()
+
+
+def minimax(depth, alpha, beta, is_maximizing):
+    global game_still_going, loser, scores
+
+    # if game_still_going is an optimization choice because when inside of is maximizing or is minimizing this check is
+    # already done so there is no need to call the function again
+    if game_still_going:
+        check_future_moves()
+    # cannot combine these if statements since we need to check if game is still going after our initial check of the
+    # game state
+    if not game_still_going:
+        score = scores[loser]
+        loser = None
+        game_still_going = True
+        return score
+
+    if is_maximizing:
+        best_score = float('-inf')
+
+        for i in range(9):
+            if buttons[i]['text'] == '':
+                buttons[i].config(text='X', state="disabled", disabledforeground=current_player)
+                check_future_moves("red")
+                score = minimax(depth+1, alpha, beta, False)
+                buttons[i].config(text='', state="normal")
+                best_score = max(score, best_score)
+                alpha = max(score, alpha)
+                if beta <= alpha:
+                    break
+
+        return best_score
+    else:
+        best_score = float('inf')
+        for i in range(9):
+            if buttons[i]['text'] == '':
+                buttons[i].config(text='X', state="disabled", disabledforeground=current_player)
+                check_future_moves("blue")
+                score = minimax(depth+1, alpha, beta, True)
+                buttons[i].config(text='', state="normal")
+                best_score = min(score, best_score)
+                beta = min(score, beta)
+                if beta <= alpha:
+                    break
+
+        return best_score
 
 
 # Update the score of the game
@@ -152,12 +281,12 @@ def update_score():
     global game_still_going, loser, player_red_wins, player_blue_wins
 
     if not game_still_going:
-        if loser == 'red':
+        if loser == "red":
             player_blue_wins = player_blue_wins+1
             player_blue_label = Label(game_score_frame, text="Player Blue's score is: " + str(player_blue_wins),
                                       font=("Helvetica", 15))
             player_blue_label.grid(row=1, column=1)
-        elif loser == 'blue':
+        elif loser == "blue":
             player_red_wins = player_red_wins+1
             player_red_label = Label(game_score_frame, text="Player Red's score is: " + str(int(player_red_wins/2)),
                                      font=("Helvetica", 15))
