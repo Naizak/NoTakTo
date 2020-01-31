@@ -62,10 +62,12 @@ current_player = "red"
 # Minimax score table
 scores = {"red": -1, "blue": 1}
 
+# -------------------------
+
 
 # What happens when any of the game board buttons are clicked
 def when_clicked(idx):
-    buttons[idx].config(text="X", state="disabled", disabledforeground=current_player, font=("Helvetica", 15, "bold"))
+    buttons[idx].config(text='X', state="disabled", disabledforeground=current_player, font=("Helvetica", 15, "bold"))
     flip_player()
     check_if_game_over()
 
@@ -95,6 +97,7 @@ def check_if_game_over():
 
 
 # MINIMAX potential game states
+# added an optional attribute in order to keep track of which player was the most recent
 def check_future_moves(*args):
     global current_player
     for arg in args:
@@ -233,8 +236,8 @@ def computers_turn():
 def minimax(depth, alpha, beta, is_maximizing):
     global game_still_going, loser, scores
 
-    # if game_still_going is an optimization choice because when inside of is maximizing or is minimizing this check is
-    # already done so there is no need to call the function again
+    # "if game_still_going" is an optimization choice because when inside of is_maximizing or is_minimizing this check
+    # is already done so there is no need to call the function again
     if game_still_going:
         check_future_moves()
     # cannot combine these if statements since we need to check if game is still going after our initial check of the
@@ -276,7 +279,7 @@ def minimax(depth, alpha, beta, is_maximizing):
         return best_score
 
 
-# Update the score of the game
+# Update the score board of the game
 def update_score():
     global game_still_going, loser, player_red_wins, player_blue_wins
 
@@ -288,6 +291,9 @@ def update_score():
             player_blue_label.grid(row=1, column=1)
         elif loser == "blue":
             player_red_wins = player_red_wins+1
+            # WORK AROUND  NOT ACTUAL FIX
+            # had to change str(player_red_wins) to str(int(player_red_wins/2)) because for some reason when player red
+            # wins the if not gets called twice
             player_red_label = Label(game_score_frame, text="Player Red's score is: " + str(int(player_red_wins/2)),
                                      font=("Helvetica", 15))
             player_red_label.grid(row=2, column=1)
@@ -304,7 +310,7 @@ def restart_game():
     flip_player()
     # prevent the bug of the player's scores still incrementing while the next game is in progress
     game_still_going = True
-    # Makes it so that human is always X and computer is always O
+    # Makes it so that human is always red and computer is always blue
     current_player = "red"
 
 
