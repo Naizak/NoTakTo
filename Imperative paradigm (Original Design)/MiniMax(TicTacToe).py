@@ -63,6 +63,7 @@ current_player = "X"
 
 # minimax score table
 scores = {'X': 1, 'O': -1, 'Draw': 0}
+# -------------------------
 
 
 # What happens when any of the game board buttons are clicked
