@@ -61,13 +61,12 @@ current_player = "red"
 
 # Minimax score table
 scores = {"red": -1, "blue": 1}
-
 # -------------------------
 
 
 # What happens when any of the game board buttons are clicked
 def when_clicked(idx):
-    buttons[idx].config(text='X', state="disabled", disabledforeground=current_player, font=("Helvetica", 15, "bold"))
+    buttons[idx].config(text='X', state="disabled", highlightbackground=current_player, font=("Helvetica", 15, "bold"))
     flip_player()
     check_if_game_over()
 
@@ -89,7 +88,8 @@ def flip_player():
 def check_if_game_over():
     global game_still_going
 
-    check_for_loser()
+    if game_still_going:
+        check_for_loser()
     if game_still_going:
         if current_player == "blue":
             computers_turn()
@@ -228,7 +228,7 @@ def computers_turn():
             best_score = score
             move = option
     current_player = "blue"
-    buttons[move].config(text='X', state="disabled", disabledforeground=current_player, font=("Helvetica", 15, "bold"))
+    buttons[move].config(text='X', state="disabled", highlightbackground=current_player, font=("Helvetica", 15, "bold"))
     flip_player()
     check_if_game_over()
 
@@ -304,7 +304,7 @@ def restart_game():
     global game_still_going, current_player
 
     for i in range(9):
-        buttons[i].config(text='', state="normal")
+        buttons[i].config(text='', highlightbackground="White", state="normal")
 
     # prevent the bug of the player's turn not displaying correctly
     flip_player()
@@ -317,7 +317,7 @@ def restart_game():
 # Making main window and title
 root.title("No-Tak-To")
 root.minsize(width=100, height=100)
-root.geometry('800x875')
+root.geometry('500x500')
 
 # Making a Menu and Sub Menus
 menu = Menu(root)
@@ -347,9 +347,9 @@ buttons = []
 # Making buttons
 for index in range(9):
     r = (index % 3)
-    c = int(index/3)
+    c = int(index / 3)
 
-    button = Button(game_board_frame, padx=100, pady=100, width=1, height=1, relief=SUNKEN, bg='#FDFDE3',
+    button = Button(game_board_frame, padx=50, pady=50, width=1, height=1, relief=SUNKEN,
                     command=lambda idx=index: when_clicked(idx))
     button.grid(row=r, column=c)
     buttons.append(button)

@@ -2,23 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abfd13d4-51eb-4320-8ec7-ae44fbcbf8a2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/MiniMax(TicTacToe).py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP paradigm/MiniMax(NoTakTo).py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP paradigm/NoTakTo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP paradigm/NoTakToGUI(Mac).py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP paradigm/TicTacToeGUI(Mac).py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP paradigm/TicTakToe.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/Mac-MiniMax(NoTakTo).py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/Mac-MiniMax(TicTakToe).py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/Mac-NoTakToGUI.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/Mac-TicTacToeGUI.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP paradigm/Mac-NoTakTo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP paradigm/Mac-TicTacToe.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MiniMax(NoTakTo).py" beforeDir="false" afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/MiniMax(NoTakTo).py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MiniMax(TicTacToe).py" beforeDir="false" afterPath="$PROJECT_DIR$/OOP paradigm/MiniMax(TicTacToe).py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NoTaKToHvsAIGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/NoTaKToHvsAIGUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NoTakToGUI(Mac).py" beforeDir="false" afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/NoTakToGUI(Mac).py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NoTakToGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/NoTakToGUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe.py" beforeDir="false" afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/TicTacToe.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToeGUI(Mac).py" beforeDir="false" afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/TicTacToeGUI(Mac).py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToeGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/TicTacToeGUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToeHvsAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/TicTacToeHvsAI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToeHvsAIGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/TicTacToeHvsAIGUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Imperative paradigm (Original Design)/MiniMax(NoTakTo).py" beforeDir="false" afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/MiniMax(NoTakTo).py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Imperative paradigm (Original Design)/MiniMax(TicTacToe).py" beforeDir="false" afterPath="$PROJECT_DIR$/Imperative paradigm (Original Design)/MiniMax(TicTacToe).py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Imperative paradigm (Original Design)/NoTakToGUI(Mac).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Imperative paradigm (Original Design)/TicTacToeGUI(Mac).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP paradigm/MiniMax(NoTakTo).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP paradigm/MiniMax(TicTacToe).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP paradigm/NoTakTo.py" beforeDir="false" afterPath="$PROJECT_DIR$/OOP paradigm/NoTakTo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP paradigm/NoTakToGUI(Mac).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP paradigm/TicTacToeGUI(Mac).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP paradigm/TicTakToe.py" beforeDir="false" afterPath="$PROJECT_DIR$/OOP paradigm/TicTakToe.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,8 +62,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.MiniMax(NoTakTo)">
-    <configuration name="HumanvsAI_Minimax" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.Mac-TicTacToe">
+    <configuration name="Mac-MiniMax(NoTakTo)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Notakto" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -71,11 +71,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TicTacToeAIExamples" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Imperative paradigm (Original Design)" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TicTacToeAIExamples/HumanvsAI_Minimax.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Imperative paradigm (Original Design)/Mac-MiniMax(NoTakTo).py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -84,7 +84,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="MiniMax(NoTakTo)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Mac-NoTakTo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Notakto" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -92,11 +92,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP paradigm" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Imperative paradigm (Original Design)/MiniMax(NoTakTo).py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OOP paradigm/Mac-NoTakTo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -105,7 +105,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="MiniMax(TicTacToe)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Mac-TicTacToe" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Notakto" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -113,11 +113,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP paradigm" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Imperative paradigm (Original Design)/MiniMax(TicTacToe).py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OOP paradigm/Mac-TicTacToe.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -126,7 +126,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="NoTakTo(Mac)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="NoTakTo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Notakto" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -134,11 +134,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP paradigm" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NoTakTo(Mac).py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OOP paradigm/NoTakTo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -147,7 +147,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="TicTacToeGUI(Mac)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="TicTakToe" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Notakto" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -155,11 +155,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP paradigm" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Imperative paradigm (Original Design)/TicTacToeGUI(Mac).py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OOP paradigm/TicTakToe.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -170,11 +170,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.MiniMax(NoTakTo)" />
-        <item itemvalue="Python.MiniMax(TicTacToe)" />
-        <item itemvalue="Python.HumanvsAI_Minimax" />
-        <item itemvalue="Python.NoTakTo(Mac)" />
-        <item itemvalue="Python.TicTacToeGUI(Mac)" />
+        <item itemvalue="Python.Mac-TicTacToe" />
+        <item itemvalue="Python.TicTakToe" />
+        <item itemvalue="Python.NoTakTo" />
+        <item itemvalue="Python.Mac-NoTakTo" />
+        <item itemvalue="Python.Mac-MiniMax(NoTakTo)" />
       </list>
     </recent_temporary>
   </component>
@@ -252,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579451465767</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Setting up the preparations to paradigm shift from Imperative to OOP">
+      <created>1580772402570</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1580772402570</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -275,6 +282,18 @@
     <MESSAGE value="Updated code structure2" />
     <MESSAGE value="Updated code structure for PC version" />
     <MESSAGE value="Added resources and examples of Tic Tac Toe with AI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added resources and examples of Tic Tac Toe with AI" />
+    <MESSAGE value="Setting up the preparations to paradigm shift from Imperative to OOP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setting up the preparations to paradigm shift from Imperative to OOP" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/OOP paradigm/Mac-TicTacToe.py</url>
+          <line>221</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

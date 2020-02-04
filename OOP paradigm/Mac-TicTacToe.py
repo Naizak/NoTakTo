@@ -44,7 +44,6 @@ minimax algorithm (takes in the game board, and the depth)
 from tkinter import *
 import tkinter.messagebox
 
-
 root = Tk()
 
 # --- Global Variables ---
@@ -376,7 +375,7 @@ def restart_game():
 # Making main window and title
 root.title("Tic-Tac-Toe")
 root.minsize(width=100, height=100)
-root.geometry('800x875')
+root.geometry('500x500')
 
 # Making a Menu and Sub Menus
 menu = Menu(root)
@@ -410,8 +409,8 @@ for index in range(9):
     r = (index % 3)
     c = int(index/3)
 
-    button = Button(game_board_frame, padx=100, pady=100, width=1, height=1, relief=SUNKEN,
-                    command=lambda idx=index: when_clicked(idx))
+    button = Button(game_board_frame, padx=50, pady=50, width=1, height=1,
+                    command=lambda index=index: when_clicked(index))
     button.grid(row=r, column=c)
     buttons.append(button)
 
